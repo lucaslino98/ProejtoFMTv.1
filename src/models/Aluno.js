@@ -23,8 +23,10 @@ const Aluno = connection.define('alunos', {
     }
 })
 
-// Aluno.beforeSave(async (aluno) => {
-//     aluno.password = await hash(aluno.password, 8)
-// })
+Aluno.beforeSave(async (user) =>{ //before save vai utilizar antes de cadastrar um usuario 
+    '' //recupera o usuario que sera criado
+       user.password = await hash(user.password, 8)
+       return user
+   })
 
 module.exports = Aluno
